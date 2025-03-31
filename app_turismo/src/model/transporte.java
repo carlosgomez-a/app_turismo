@@ -1,0 +1,148 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import controller.Conexion;
+
+public class transporte {
+
+	public int idtransporte = 0;
+	public String matricula = "";
+	public String marca = "";
+	public int puestos = 0;	
+	public String modelo = "";
+	public String categoria = "";
+	public int idtipotransporte = 0;	
+	public int numero_motor = 0;
+	
+	public int getIdtransporte() {
+		return idtransporte;
+	}
+	
+	
+
+	
+
+
+	public transporte() {
+		super();
+	}
+
+
+
+
+
+
+	public void setIdtransporte(int idtransporte) {
+		this.idtransporte = idtransporte;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public int getPuestos() {
+		return puestos;
+	}
+
+	public void setPuestos(int puestos) {
+		this.puestos = puestos;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public int getIdtipotransporte() {
+		return idtipotransporte;
+	}
+
+	public void setIdtipotransporte(int idtipotransporte) {
+		this.idtipotransporte = idtipotransporte;
+	}
+
+	public int getNumero_motor() {
+		return numero_motor;
+	}
+
+	public void setNumero_motor(int numero_motor) {
+		this.numero_motor = numero_motor;
+	}
+
+	public transporte(int idtransporte, String matricula, String marca, int puestos, String modelo, String categoria,
+			int idtipotransporte, int numero_motor) {
+		super();
+		this.idtransporte = idtransporte;
+		this.matricula = matricula;
+		this.marca = marca;
+		this.puestos = puestos;
+		this.modelo = modelo;
+		this.categoria = categoria;
+		this.idtipotransporte = idtipotransporte;
+		this.numero_motor = numero_motor;
+	}	
+
+Conexion conector = new Conexion();
+	
+	public void Create(String matricula, String marca, int puestos, String modelo, String categoria, String numero_motor, int idtipotransporte ) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // preparar la trx (transacción)
+		
+		String script = "INSERT INTO tbltransporte (matricula, marca, puestos, modelo, categoria, numero_motor, idtipotransporte) values (?,?,?,?,?,?,?)";
+		
+		try {
+			dbConnection = conector.conectarBD(); // Abrir la conexión 
+			pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+			
+			//Parametizar los campos 
+			pst.setString(1, matricula);
+			pst.setString(2, marca);
+			pst.setInt(3, puestos);
+			pst.setString(4, modelo);
+			pst.setString(5, categoria);
+			pst.setString(6, numero_motor);
+			pst.setInt(7, idtipotransporte);
+			;
+
+			
+			
+			//Ejecutar la trx (transacción)
+			pst.executeUpdate();
+			JOptionPane.showConfirmDialog(null, "Registro con exito. ");
+			
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	
+	}
+	
+}
