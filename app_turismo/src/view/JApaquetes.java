@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class JApaquetes extends JFrame {
 
@@ -42,6 +43,11 @@ public class JApaquetes extends JFrame {
 	private JTextField txtidmedios;
 	private JTextField txtidclientes;
 	private JTextField txtidtransporte;
+	private JLabel lblNewLabel_14;
+	private JTextField txtcodigo;
+	private JButton btncodigo;
+	Paquete pa = new Paquete();
+
 
 	/**
 	 * Launch the application.
@@ -65,7 +71,7 @@ public class JApaquetes extends JFrame {
 	public JApaquetes() {
 		setTitle("Paquetes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 499);
+		setBounds(100, 100, 523, 499);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -153,7 +159,6 @@ public class JApaquetes extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Paquete pa = new Paquete();
 				pa.Create (Integer.parseInt(txtiddestino.getText()) , Integer.parseInt(txtidorigen.getText()), txtprecio.getText(), txtfechaventa.getText(), txthoraventa.getText(), txtfechaejecucion.getText(), txthorasalida.getText(), txtobservaciones.getText(),  Integer.parseInt(txtidpromotores.getText()),  Integer.parseInt(txtidagencia.getText()),  Integer.parseInt(txtidmedios.getText()),  Integer.parseInt(txtidclientes.getText()),  Integer.parseInt(txtidtransporte.getText()));
 				
 			}
@@ -210,6 +215,29 @@ public class JApaquetes extends JFrame {
 		txtidtransporte.setBounds(243, 356, 86, 20);
 		contentPane.add(txtidtransporte);
 		txtidtransporte.setColumns(10);
+		
+		lblNewLabel_14 = new JLabel("ID de paquetes:");
+		lblNewLabel_14.setBounds(377, 154, 95, 14);
+		contentPane.add(lblNewLabel_14);
+		
+		txtcodigo = new JTextField();
+		txtcodigo.setBounds(377, 184, 86, 20);
+		contentPane.add(txtcodigo);
+		txtcodigo.setColumns(10);
+		
+		btncodigo = new JButton("");
+		btncodigo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				pa.delete(Integer.parseInt(txtcodigo.getText()));
+				
+				txtcodigo.setText("");
+				
+			}
+		});
+		btncodigo.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btncodigo.setBounds(382, 230, 81, 43);
+		contentPane.add(btncodigo);
 	}
 
 }

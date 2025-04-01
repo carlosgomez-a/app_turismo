@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class JAtipostransportes extends JFrame {
 
@@ -22,6 +23,9 @@ public class JAtipostransportes extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtnombre;
 	private JTextField txtobservacion;
+	private JTextField txtidtipotransporte;
+	tipotransportes tit = new tipotransportes();
+
 
 	/**
 	 * Launch the application.
@@ -45,7 +49,7 @@ public class JAtipostransportes extends JFrame {
 	public JAtipostransportes() {
 		setTitle("Tipos de transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 254);
+		setBounds(100, 100, 517, 254);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -80,16 +84,36 @@ public class JAtipostransportes extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				tipotransportes tit = new tipotransportes();
 				tit.Create(txtnombre.getText(), txtobservacion.getText());
 			
-				
-				
+			
 				
 			}
 		});
 		btnGuardar.setBounds(158, 164, 89, 23);
 		contentPane.add(btnGuardar);
+		
+		JLabel lblNewLabel_3 = new JLabel("ID tipos de transporte:");
+		lblNewLabel_3.setBounds(361, 77, 130, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		txtidtipotransporte = new JTextField();
+		txtidtipotransporte.setBounds(379, 102, 86, 20);
+		contentPane.add(txtidtipotransporte);
+		txtidtipotransporte.setColumns(10);
+		
+		JButton btnidtipotransporte = new JButton("");
+		btnidtipotransporte.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tit.delete(Integer.parseInt(txtidtipotransporte.getText()));
+				
+			}
+		});
+		btnidtipotransporte.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btnidtipotransporte.setBounds(389, 133, 68, 54);
+		contentPane.add(btnidtipotransporte);
 	}
 
 }

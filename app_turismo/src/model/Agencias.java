@@ -148,5 +148,39 @@ Conexion conector = new Conexion();
 	}
 	
 	
+	public void delete( int idagencia) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // preparar la trx (transacción)
+		
+		String script = "DELETE FROM tblagencias WHERE idagencia = ?";
+		
+		try {
+			dbConnection = conector.conectarBD(); // Abrir la conexión 
+			pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+			
+			//Parametizar los campos 
+			pst.setInt(1, idagencia);
+			
+			//Confirmar la operacion
+			int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el registro No. " + idagencia + "?");
+			
+			if (respuesta == JOptionPane.OK_OPTION) {
+				
+				//Ejecutar la trx
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Resgistro No. " + idagencia + "eliminado");
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	
+	
 	
 }

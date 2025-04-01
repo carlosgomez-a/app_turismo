@@ -15,6 +15,10 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+
 
 public class JAmedios extends JFrame {
 
@@ -25,6 +29,10 @@ public class JAmedios extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_3;
 	private JTextField txtidtiposmedios;
+	private JLabel lblNewLabel_4;
+	private JTextField txtidmedios;
+	private JButton btnidmedios;
+	medios me = new medios();
 
 	/**
 	 * Launch the application.
@@ -48,7 +56,7 @@ public class JAmedios extends JFrame {
 	public JAmedios() {
 		setTitle("Medios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 271);
+		setBounds(100, 100, 507, 271);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -78,7 +86,6 @@ public class JAmedios extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				medios me = new medios();
 				me.Create(txtnombre.getText(), txtobservacion.getText(), Integer.parseInt(txtidtiposmedios.getText()));
 			}
 		});
@@ -98,6 +105,33 @@ public class JAmedios extends JFrame {
 		txtidtiposmedios.setBounds(221, 134, 86, 20);
 		contentPane.add(txtidtiposmedios);
 		txtidtiposmedios.setColumns(10);
+		
+		lblNewLabel_4 = new JLabel("ID de medios:");
+		lblNewLabel_4.setBounds(357, 84, 86, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		txtidmedios = new JTextField();
+		txtidmedios.setBounds(357, 106, 86, 20);
+		contentPane.add(txtidmedios);
+		txtidmedios.setColumns(10);
+		
+		btnidmedios = new JButton("");
+		btnidmedios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			me.delete(Integer.parseInt(txtidmedios.getText()));
+			
+			txtidmedios.setText("");
+			}
+		});
+		btnidmedios.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btnidmedios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnidmedios.setBounds(367, 134, 69, 44);
+		contentPane.add(btnidmedios);
 	}
 
 }

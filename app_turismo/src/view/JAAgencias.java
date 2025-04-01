@@ -1,4 +1,4 @@
-package view;
+ package view;
 
 import java.awt.EventQueue;
 
@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class JAAgencias extends JFrame {
 
@@ -31,6 +32,8 @@ public class JAAgencias extends JFrame {
 	private JButton btnGuardar;
 	private JLabel lblNewLabel_8;
 	private JTextField txtidcompania;
+	private JTextField txtidagencia;
+	Agencias rc = new Agencias();
 
 	/**
 	 * Launch the application.
@@ -54,7 +57,7 @@ public class JAAgencias extends JFrame {
 	public JAAgencias() {
 		setTitle("Agencia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 361);
+		setBounds(100, 100, 450, 383);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -131,7 +134,6 @@ public class JAAgencias extends JFrame {
 			
 				
 					
-					Agencias rc = new Agencias();
 					rc.Create(txtNombre.getText(), txtDirrecion.getText(), txtcorreoelectronico.getText(), Integer.parseInt(txttelefono.getText()), txtfechacreacion.getText(),txtweb.getText(), txtobservacion.getText(), Integer.parseInt(txtidcompania.getText()));
 	
 			}
@@ -140,7 +142,7 @@ public class JAAgencias extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardar.setBounds(163, 288, 89, 23);
+		btnGuardar.setBounds(86, 289, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel_8 = new JLabel("Gestión de agencias ");
@@ -156,5 +158,28 @@ public class JAAgencias extends JFrame {
 		txtidcompania.setBounds(218, 240, 86, 20);
 		contentPane.add(txtidcompania);
 		txtidcompania.setColumns(10);
+		
+		JLabel lblNewLabel_9 = new JLabel("ID de agencia:");
+		lblNewLabel_9.setBounds(347, 65, 76, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		txtidagencia = new JTextField();
+		txtidagencia.setBounds(337, 86, 86, 23);
+		contentPane.add(txtidagencia);
+		txtidagencia.setColumns(10);
+		
+		JButton btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			rc.delete(Integer.parseInt(txtidagencia.getText()));
+			
+			
+			txtidagencia.setText("");
+			}
+		});
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(333, 130, 89, 49);
+		contentPane.add(btndelete);
 	}
 }

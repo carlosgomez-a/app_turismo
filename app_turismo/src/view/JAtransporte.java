@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class JAtransporte extends JFrame {
 
@@ -26,6 +27,8 @@ public class JAtransporte extends JFrame {
 	private JTextField txtnumeromotor;
 	private JTextField txtmodelo;
 	private JTextField txtidtipotransporte;
+	private JTextField txtidtransporte;
+	transporte tra = new transporte();
 
 	/**
 	 * Launch the application.
@@ -49,7 +52,7 @@ public class JAtransporte extends JFrame {
 	public JAtransporte() {
 		setTitle("Transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 338);
+		setBounds(100, 100, 467, 338);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -111,7 +114,6 @@ public class JAtransporte extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				transporte tra = new transporte();
 				tra.Create(txtmatricula.getText(), txtmarca.getText(), Integer.parseInt(txtpuestos.getText()), txtmodelo.getText(), txtcategoria.getText(), txtnumeromotor.getText(), Integer.parseInt(txtidtipotransporte.getText()));
 				
 			}
@@ -136,5 +138,29 @@ public class JAtransporte extends JFrame {
 		txtidtipotransporte.setBounds(213, 228, 86, 20);
 		contentPane.add(txtidtipotransporte);
 		txtidtipotransporte.setColumns(10);
+		
+		JLabel lblNewLabel_8 = new JLabel("ID tipo de transporte:");
+		lblNewLabel_8.setBounds(330, 97, 132, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		txtidtransporte = new JTextField();
+		txtidtransporte.setBounds(342, 119, 86, 20);
+		contentPane.add(txtidtransporte);
+		txtidtransporte.setColumns(10);
+		
+		JButton btnidtransporte = new JButton("");
+		btnidtransporte.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tra.delete(Integer.parseInt(txtidtransporte.getText()));
+				
+				txtidtransporte.setText("");
+				
+			}
+		});
+		btnidtransporte.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btnidtransporte.setBounds(352, 150, 68, 43);
+		contentPane.add(btnidtransporte);
 	}
 }

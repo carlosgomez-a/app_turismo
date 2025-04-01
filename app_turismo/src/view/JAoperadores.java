@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class JAoperadores extends JFrame {
 
@@ -31,6 +32,10 @@ public class JAoperadores extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_8;
 	private JTextField txtidtransporte;
+	private JLabel lblNewLabel_9;
+	private JTextField txtidoperadores;
+	private JButton btnidoperadores;
+	operadores op = new operadores();
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class JAoperadores extends JFrame {
 	public JAoperadores() {
 		setTitle("Operadores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 364);
+		setBounds(100, 100, 511, 364);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -129,7 +134,7 @@ public class JAoperadores extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				operadores op = new operadores();
+				
 				op.Create(txttipodocumento.getText(), txtnumerodocumento.getText(), txtnombres.getText(), txtapellidos.getText(), txtdireccion.getText(), txtcorreoelectronico.getText(), txttelefono.getText(), Integer.parseInt(txtidtransporte.getText()));
 				
 			}
@@ -154,6 +159,29 @@ public class JAoperadores extends JFrame {
 		txtidtransporte.setBounds(241, 233, 86, 20);
 		contentPane.add(txtidtransporte);
 		txtidtransporte.setColumns(10);
+		
+		lblNewLabel_9 = new JLabel("ID de operadores:");
+		lblNewLabel_9.setBounds(369, 61, 97, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		txtidoperadores = new JTextField();
+		txtidoperadores.setBounds(369, 96, 86, 20);
+		contentPane.add(txtidoperadores);
+		txtidoperadores.setColumns(10);
+		
+		btnidoperadores = new JButton("");
+		btnidoperadores.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				op.delete(Integer.parseInt(txtidoperadores.getText()));
+				
+				txtidoperadores.setText("");
+				
+			}
+		});
+		btnidoperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btnidoperadores.setBounds(379, 136, 74, 43);
+		contentPane.add(btnidoperadores);
 	}
 
 }

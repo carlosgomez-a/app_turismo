@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class JApromotores extends JFrame {
 
@@ -32,6 +33,11 @@ public class JApromotores extends JFrame {
 	private JTextField txtfechanacimiento;
 	private JTextField txttelefono;
 	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_10;
+	private JTextField txtidpromotores;
+	private JButton btnidpromotores;
+	promotores op = new promotores();
+
 
 	/**
 	 * Launch the application.
@@ -55,7 +61,7 @@ public class JApromotores extends JFrame {
 	public JApromotores() {
 		setTitle("Promotores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 383);
+		setBounds(100, 100, 482, 383);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -152,7 +158,6 @@ public class JApromotores extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				promotores op = new promotores();
 				op.Create(txttipodocumento.getText(), txtnumerodocumento.getText(), txtnombres.getText(), txtapellidos.getText(), txtdireccion.getText(), txtcorreopersonal.getText(), txtcorreocorporativo.getText(), txtfechanacimiento.getText(), txttelefono.getText());
 				
 			}
@@ -164,6 +169,29 @@ public class JApromotores extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(128, 11, 165, 20);
 		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_10 = new JLabel("ID de promotores: ");
+		lblNewLabel_10.setBounds(353, 82, 103, 14);
+		contentPane.add(lblNewLabel_10);
+		
+		txtidpromotores = new JTextField();
+		txtidpromotores.setBounds(353, 117, 86, 20);
+		contentPane.add(txtidpromotores);
+		txtidpromotores.setColumns(10);
+		
+		btnidpromotores = new JButton("");
+		btnidpromotores.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				op.delete(Integer.parseInt(txtidpromotores.getText()));
+				txtidpromotores.setText("");
+				
+			}
+		});
+		btnidpromotores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btnidpromotores.setBounds(360, 160, 67, 39);
+		contentPane.add(btnidpromotores);
 	}
 
 }

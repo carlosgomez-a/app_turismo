@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class JACompania extends JFrame {
 
@@ -30,6 +31,8 @@ public class JACompania extends JFrame {
 	private JTextField txtweb;
 	private JTextField txtobservacion;
 	private JLabel lblNewLabel;
+	private JTextField txtidcompania;
+	Compania cc = new Compania();
 
 	/**
 	 * Launch the application.
@@ -53,7 +56,7 @@ public class JACompania extends JFrame {
 	public JACompania() {
 		setTitle("Compañia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 383);
+		setBounds(100, 100, 498, 383);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -119,7 +122,7 @@ public class JACompania extends JFrame {
 		txtweb.setColumns(10);
 		
 		txtobservacion = new JTextField();
-		txtobservacion.setBounds(215, 229, 86, 20);
+		txtobservacion.setBounds(215, 232, 86, 20);
 		contentPane.add(txtobservacion);
 		txtobservacion.setColumns(10);
 		
@@ -132,7 +135,7 @@ public class JACompania extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Compania cc = new Compania();
+			
 				cc.Create (txtrazonsocial.getText(), txtdirrecion.getText(), txtcorreoelectronico.getText(), Integer.parseInt(txtelefono.getText()) , txtfechacreacion.getText(), txtweb.getText(), txtobservacion.getText());
 				
 			}
@@ -144,5 +147,29 @@ public class JACompania extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(136, 21, 136, 28);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_8 = new JLabel("ID de la compañia:");
+		lblNewLabel_8.setBounds(355, 82, 91, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		txtidcompania = new JTextField();
+		txtidcompania.setBounds(355, 107, 86, 20);
+		contentPane.add(txtidcompania);
+		txtidcompania.setColumns(10);
+		
+		JButton btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				cc.delete(Integer.parseInt(txtidcompania.getText()));
+				
+				txtidcompania.setText("");
+				
+			}
+		});
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(365, 135, 61, 57);
+		contentPane.add(btndelete);
 	}
 }

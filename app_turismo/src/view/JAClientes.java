@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class JAClientes extends JFrame {
 
@@ -30,7 +31,8 @@ public class JAClientes extends JFrame {
 	private JTextField txtestadocivil;
 	private JTextField txttelefono;
 	private JTextField txtdirecion;
-
+	Clientes cl = new Clientes();
+	private JTextField txtidclientes;
 	/**
 	 * Launch the application.
 	 */
@@ -53,7 +55,7 @@ public class JAClientes extends JFrame {
 	public JAClientes() {
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 424);
+		setBounds(100, 100, 541, 437);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -169,13 +171,35 @@ public class JAClientes extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Clientes cl = new Clientes();
+		
 				cl.Create(txttipodocumento.getText(), Integer.parseInt(txtnumerodocumento.getText()), txtnombre.getText(), txtapellido.getText(), txteps.getText(), txtalergia.getText(), txtfechanacimiento.getText(), txtcorreoelectronico.getText(), txtestadocivil.getText(), txttelefono.getText(), txtdirecion.getText());
 
 			
 			}
 		});
-		btnGuardar.setBounds(163, 351, 89, 23);
+		btnGuardar.setBounds(163, 364, 89, 23);
 		contentPane.add(btnGuardar);
+		
+		JLabel lblNewLabel_12 = new JLabel("ID de clientes:");
+		lblNewLabel_12.setBounds(395, 62, 86, 14);
+		contentPane.add(lblNewLabel_12);
+		
+		txtidclientes = new JTextField();
+		txtidclientes.setBounds(384, 87, 86, 20);
+		contentPane.add(txtidclientes);
+		txtidclientes.setColumns(10);
+		
+		JButton btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.delete(Integer.parseInt(txtidclientes.getText()));
+				
+				txtidclientes.setText("");
+			}
+		});
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(384, 118, 81, 58);
+		contentPane.add(btndelete);
 	}
 }
