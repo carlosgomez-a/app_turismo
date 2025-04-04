@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -22,18 +24,11 @@ public class transporte {
 	public int getIdtransporte() {
 		return idtransporte;
 	}
+	 
 	
-	
-
-	
-
-
 	public transporte() {
 		super();
 	}
-
-
-
 
 
 
@@ -175,6 +170,41 @@ Conexion conector = new Conexion();
 		}
 		
 	}
-	
+	//Consultar todos los registros de la tabla tipo medios
+		public void readOne( int idtransporte, JTextField matricula, JTextField marca, JTextField puestos ,JTextField modelo, JTextField categoria, JTextField idtipotransporte, JTextField numero_motor) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "SELECT * FROM tbltransporte WHERE idtransporte = ?";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setInt(1, idtransporte);
+				ResultSet rs = pst.executeQuery();//almacenamiento temporal
+				
+				
+				while (rs.next()) {
+					matricula.setText(rs.getString(2));
+					marca.setText(rs.getString(3));
+					puestos.setText(rs.getString(4));
+					modelo.setText(rs.getString(5));
+					categoria.setText(rs.getString(6));
+					idtipotransporte.setText(rs.getString(7));
+					numero_motor.setText(rs.getString(8));
+				
+					
+				}
+				
+			
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
+
+
 	
 }

@@ -20,7 +20,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 
 public class JApaquetes extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtiddestino;
@@ -45,8 +45,9 @@ public class JApaquetes extends JFrame {
 	private JTextField txtidtransporte;
 	private JLabel lblNewLabel_14;
 	private JTextField txtcodigo;
-	private JButton btncodigo;
+	private JButton btndelete;
 	Paquete pa = new Paquete();
+	private JTextField txtconsultar;
 
 
 	/**
@@ -71,7 +72,7 @@ public class JApaquetes extends JFrame {
 	public JApaquetes() {
 		setTitle("Paquetes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 523, 499);
+		setBounds(100, 100, 523, 525);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -163,12 +164,12 @@ public class JApaquetes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(166, 397, 89, 23);
+		btnGuardar.setBounds(190, 440, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de paquetes ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(154, 25, 139, 17);
+		lblNewLabel.setBounds(190, 25, 139, 17);
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_9 = new JLabel("ID de promotores:");
@@ -225,8 +226,8 @@ public class JApaquetes extends JFrame {
 		contentPane.add(txtcodigo);
 		txtcodigo.setColumns(10);
 		
-		btncodigo = new JButton("");
-		btncodigo.addMouseListener(new MouseAdapter() {
+		btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pa.delete(Integer.parseInt(txtcodigo.getText()));
@@ -235,9 +236,32 @@ public class JApaquetes extends JFrame {
 				
 			}
 		});
-		btncodigo.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btncodigo.setBounds(382, 230, 81, 43);
-		contentPane.add(btncodigo);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(382, 230, 81, 43);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		JLabel lblNewLabel_15 = new JLabel("Consultar Registros");
+		lblNewLabel_15.setBounds(57, 395, 108, 14);
+		contentPane.add(lblNewLabel_15);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(209, 392, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		JButton btnRead = new JButton("");
+		
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				pa.readOne(Integer.parseInt(txtconsultar.getText()), txtiddestino, txtidorigen, txtprecio, txtfechaventa, txthoraventa, txtfechaejecucion, txthorasalida, txtobservaciones, txtidpromotores, txtidagencia, txtidmedios, txtidclientes, txtidtransporte);
+			}
+		});
+		btnRead.setBounds(331, 381, 41, 43);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
-
 }

@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 public class JACompania extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtrazonsocial;
@@ -33,6 +33,9 @@ public class JACompania extends JFrame {
 	private JLabel lblNewLabel;
 	private JTextField txtidcompania;
 	Compania cc = new Compania();
+	private JLabel lblNewLabel_9;
+	private JTextField txtconsultar;
+	private JButton btnRead;
 
 	/**
 	 * Launch the application.
@@ -56,7 +59,7 @@ public class JACompania extends JFrame {
 	public JACompania() {
 		setTitle("Compañia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 498, 383);
+		setBounds(100, 100, 498, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -140,12 +143,12 @@ public class JACompania extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(138, 292, 89, 23);
+		btnGuardar.setBounds(137, 332, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de compañia");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(136, 21, 136, 28);
+		lblNewLabel.setBounds(185, 23, 136, 28);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_8 = new JLabel("ID de la compañia:");
@@ -170,6 +173,27 @@ public class JACompania extends JFrame {
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
 		btndelete.setBounds(365, 135, 61, 57);
+		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
+		
+		lblNewLabel_9 = new JLabel("Consultar Registros");
+		lblNewLabel_9.setBounds(60, 282, 104, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(185, 279, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		btnRead = new JButton("");
+		btnRead.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cc.readOne(Integer.parseInt(txtconsultar.getText()), txtrazonsocial, txtdirrecion, txtcorreoelectronico, txtelefono, txtfechacreacion, txtweb, txtobservacion);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(309, 272, 49, 38);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
 }

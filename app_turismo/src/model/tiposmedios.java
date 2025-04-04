@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -20,7 +22,7 @@ public class tiposmedios {
 			this.observacion = observacion;
 		}
 		
-		
+		 
 		
 		
 
@@ -106,6 +108,34 @@ public class tiposmedios {
 				
 				
 				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
+		//Consultar todos los registros de la tabla tipo medios
+		public void readOne( int idtiposmedios, JTextField nombre, JTextField observacion) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "SELECT * FROM tbltiposmedios WHERE idtiposmedios = ?";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setInt(1, idtiposmedios);
+				ResultSet rs = pst.executeQuery();//almacenamiento temporal
+				
+				
+				while (rs.next()) {
+					nombre.setText(rs.getString(2));;
+					observacion.setText(rs.getString(3));;
+					
+				}
+				
+			
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

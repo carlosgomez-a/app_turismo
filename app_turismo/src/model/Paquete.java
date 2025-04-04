@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -205,7 +207,7 @@ Conexion conector = new Conexion();
 				JOptionPane.showConfirmDialog(null, "Resgistro No. " + codigo + "eliminado");
 				
 			}
-			
+			 
 			
 			
 		} catch (SQLException e) {
@@ -213,4 +215,47 @@ Conexion conector = new Conexion();
 		}
 		
 	}
+	
+	//Consultar todos los registros de la tabla tipo medios
+			public void readOne( int codigo, JTextField iddestino, JTextField idorigen, JTextField precio ,JTextField fechaventa, JTextField horaventa, JTextField fechaejecucion, JTextField horasalida, JTextField observaciones, JTextField idpromotores, JTextField idagencia, JTextField idmedios, JTextField idclientes, JTextField idtransporte) {
+				Connection dbConnection = null;
+				PreparedStatement pst = null; // preparar la trx (transacción)
+				
+				String script = "SELECT * FROM tblpaquetes WHERE codigo = ?";
+				
+				try {
+					dbConnection = conector.conectarBD(); // Abrir la conexión 
+					pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+					
+					//Parametizar los campos 
+					pst.setInt(1, codigo);
+					ResultSet rs = pst.executeQuery();//almacenamiento temporal
+					
+					
+					while (rs.next()) {
+						iddestino.setText(rs.getString(2));
+						idorigen.setText(rs.getString(3));
+						precio.setText(rs.getString(4));
+						fechaventa.setText(rs.getString(5));
+						horaventa.setText(rs.getString(6));
+						fechaejecucion.setText(rs.getString(7));
+						horasalida.setText(rs.getString(8));
+						observaciones.setText(rs.getString(9));
+						idpromotores.setText(rs.getString(10));
+						idagencia.setText(rs.getString(11));
+						idmedios.setText(rs.getString(12));
+						idclientes.setText(rs.getString(13));
+						idtransporte.setText(rs.getString(14));
+					
+						
+					}
+					
+				
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				
+			}
+
+
 }

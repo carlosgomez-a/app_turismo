@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 public class JAtransporte extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtmatricula;
@@ -29,6 +29,7 @@ public class JAtransporte extends JFrame {
 	private JTextField txtidtipotransporte;
 	private JTextField txtidtransporte;
 	transporte tra = new transporte();
+	private JTextField txtconsultar;
 
 	/**
 	 * Launch the application.
@@ -52,7 +53,7 @@ public class JAtransporte extends JFrame {
 	public JAtransporte() {
 		setTitle("Transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 338);
+		setBounds(100, 100, 467, 376);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -61,7 +62,7 @@ public class JAtransporte extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Gestión de transporte");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(102, 11, 197, 34);
+		lblNewLabel.setBounds(148, 11, 197, 34);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Matricula: ");
@@ -118,7 +119,7 @@ public class JAtransporte extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(138, 265, 89, 23);
+		btnGuardar.setBounds(138, 303, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_6 = new JLabel("Modelo: ");
@@ -148,8 +149,8 @@ public class JAtransporte extends JFrame {
 		contentPane.add(txtidtransporte);
 		txtidtransporte.setColumns(10);
 		
-		JButton btnidtransporte = new JButton("");
-		btnidtransporte.addMouseListener(new MouseAdapter() {
+		JButton btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -159,8 +160,31 @@ public class JAtransporte extends JFrame {
 				
 			}
 		});
-		btnidtransporte.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btnidtransporte.setBounds(352, 150, 68, 43);
-		contentPane.add(btnidtransporte);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(352, 150, 68, 43);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		JLabel lblNewLabel_9 = new JLabel("Consultar Registros");
+		lblNewLabel_9.setBounds(59, 273, 111, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(202, 270, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		JButton btnRead = new JButton("");
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tra.readOne(Integer.parseInt(txtconsultar.getText()), txtmatricula, txtmarca, txtpuestos, txtmodelo, txtcategoria, txtidtipotransporte, txtnumeromotor);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(316, 257, 46, 43);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
 }

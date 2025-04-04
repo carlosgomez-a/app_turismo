@@ -19,7 +19,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 
 public class JAoperadores extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txttipodocumento;
@@ -34,8 +34,11 @@ public class JAoperadores extends JFrame {
 	private JTextField txtidtransporte;
 	private JLabel lblNewLabel_9;
 	private JTextField txtidoperadores;
-	private JButton btnidoperadores;
+	private JButton btndelete;
 	operadores op = new operadores();
+	private JLabel lblNewLabel_10;
+	private JTextField txtconsultar;
+	private JButton btnRead;
 
 	/**
 	 * Launch the application.
@@ -59,7 +62,7 @@ public class JAoperadores extends JFrame {
 	public JAoperadores() {
 		setTitle("Operadores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 511, 364);
+		setBounds(100, 100, 511, 415);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -143,7 +146,7 @@ public class JAoperadores extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardar.setBounds(154, 291, 89, 23);
+		btnGuardar.setBounds(164, 314, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de operadores");
@@ -169,8 +172,8 @@ public class JAoperadores extends JFrame {
 		contentPane.add(txtidoperadores);
 		txtidoperadores.setColumns(10);
 		
-		btnidoperadores = new JButton("");
-		btnidoperadores.addMouseListener(new MouseAdapter() {
+		btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				op.delete(Integer.parseInt(txtidoperadores.getText()));
@@ -179,9 +182,32 @@ public class JAoperadores extends JFrame {
 				
 			}
 		});
-		btnidoperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btnidoperadores.setBounds(379, 136, 74, 43);
-		contentPane.add(btnidoperadores);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(379, 136, 74, 43);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		lblNewLabel_10 = new JLabel("Consultar Registros");
+		lblNewLabel_10.setBounds(52, 271, 148, 14);
+		contentPane.add(lblNewLabel_10);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(222, 268, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		btnRead = new JButton("");
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				op.readOne(Integer.parseInt(txtconsultar.getText()), txttipodocumento, txtnumerodocumento, txtnombres, txtapellidos, txtdireccion, txtcorreoelectronico, txttelefono, txtidtransporte);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(329, 257, 53, 37);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
 
 }

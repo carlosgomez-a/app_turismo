@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -179,7 +181,39 @@ Conexion conector = new Conexion();
 		}
 		
 	}
+	//Consultar todos los registros de la tabla tipo medios
+			public void readOne( int idagencia, JTextField nombre, JTextField direccion, JTextField correoElectronico,JTextField telefono, JTextField web,  JTextField observacion) {
+				Connection dbConnection = null;
+				PreparedStatement pst = null; // preparar la trx (transacción)
+				
+				String script = "SELECT * FROM tblagencias WHERE idagencia = ?";
+				
+				try {
+					dbConnection = conector.conectarBD(); // Abrir la conexión 
+					pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+					
+					//Parametizar los campos 
+					pst.setInt(1, idagencia);
+					ResultSet rs = pst.executeQuery();//almacenamiento temporal
+					
+					
+					while (rs.next()) {
+						nombre.setText(rs.getString(2));
+						direccion.setText(rs.getString(3));
+						correoElectronico.setText(rs.getString(4));
+						telefono.setText(rs.getString(5));
+						web.setText(rs.getString(6));
+						observacion.setText(rs.getString(7));
+						
+						
+					}
+					
+				
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				
+			}
 	
-	
-	
+	 
 }

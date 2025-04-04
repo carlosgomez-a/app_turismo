@@ -20,7 +20,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 
 public class JApromotores extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txttipodocumento;
@@ -35,8 +35,11 @@ public class JApromotores extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_10;
 	private JTextField txtidpromotores;
-	private JButton btnidpromotores;
+	private JButton btndelete;
 	promotores op = new promotores();
+	private JLabel lblNewLabel_11;
+	private JTextField txtconsultar;
+	private JButton btnRead;
 
 
 	/**
@@ -61,7 +64,7 @@ public class JApromotores extends JFrame {
 	public JApromotores() {
 		setTitle("Promotores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 482, 383);
+		setBounds(100, 100, 482, 420);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -162,7 +165,7 @@ public class JApromotores extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(151, 300, 89, 23);
+		btnGuardar.setBounds(153, 347, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de promotores");
@@ -179,8 +182,8 @@ public class JApromotores extends JFrame {
 		contentPane.add(txtidpromotores);
 		txtidpromotores.setColumns(10);
 		
-		btnidpromotores = new JButton("");
-		btnidpromotores.addMouseListener(new MouseAdapter() {
+		btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -189,9 +192,32 @@ public class JApromotores extends JFrame {
 				
 			}
 		});
-		btnidpromotores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btnidpromotores.setBounds(360, 160, 67, 39);
-		contentPane.add(btnidpromotores);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(360, 160, 67, 39);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		lblNewLabel_11 = new JLabel("Consultar Registros");
+		lblNewLabel_11.setBounds(66, 291, 94, 14);
+		contentPane.add(lblNewLabel_11);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(206, 288, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		btnRead = new JButton("");
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				op.readOne(Integer.parseInt(txtconsultar.getText()), txttipodocumento, txtnumerodocumento, txtnombres, txtapellidos, txtdireccion, txtcorreopersonal, txtcorreocorporativo, txtfechanacimiento, txttelefono);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(327, 281, 57, 39);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
 
 }

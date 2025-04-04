@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -153,7 +155,7 @@ Conexion conector = new Conexion();
 				
 			}
 			
-			
+			 
 			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -161,5 +163,40 @@ Conexion conector = new Conexion();
 		
 	}
 	
-	
+	//Consultar todos los registros de la tabla tipo medios
+		public void readOne( int idoperadores, JTextField tipodocuento, JTextField numerodocumento, JTextField nombres,JTextField apellidos, JTextField direccion,  JTextField correoelectronico ,  JTextField telefono, JTextField idtransporte) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "SELECT * FROM tbloperadores WHERE idoperadores = ?";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setInt(1, idoperadores);
+				ResultSet rs = pst.executeQuery();//almacenamiento temporal
+				
+				
+				while (rs.next()) {
+					tipodocuento.setText(rs.getString(2));
+					numerodocumento.setText(rs.getString(3));
+					nombres.setText(rs.getString(4));
+					apellidos.setText(rs.getString(5));
+					direccion.setText(rs.getString(6));
+					correoelectronico.setText(rs.getString(7));
+					telefono.setText(rs.getString(8));
+					idtransporte.setText(rs.getString(9));
+					
+					
+					
+				}
+				
+			
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
 }

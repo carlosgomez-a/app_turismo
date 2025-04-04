@@ -15,15 +15,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JAtiposmedios extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtnombre;
 	private JTextField txtobservacion;
 	private JTextField txtidtiposmedios;
 	tiposmedios cr = new tiposmedios();
+	private JTextField txtidtiposmedios2;
 
 
 	/**
@@ -48,7 +51,7 @@ public class JAtiposmedios extends JFrame {
 	public JAtiposmedios() {
 		setTitle("Tipos De Medios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 492, 300);
+		setBounds(100, 100, 492, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -80,7 +83,7 @@ public class JAtiposmedios extends JFrame {
 				cr.Create(txtnombre.getText(),txtobservacion.getText());
 			}
 		});
-		btnGuardar.setBounds(146, 189, 89, 23);
+		btnGuardar.setBounds(174, 247, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Gestión de tipos de medios");
@@ -93,12 +96,16 @@ public class JAtiposmedios extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		txtidtiposmedios = new JTextField();
-		txtidtiposmedios.setBounds(358, 118, 86, 20);
+		txtidtiposmedios.setBounds(368, 118, 86, 20);
 		contentPane.add(txtidtiposmedios);
 		txtidtiposmedios.setColumns(10);
 		
-		JButton btnidtiposmedios = new JButton("");
-		btnidtiposmedios.addMouseListener(new MouseAdapter() {
+		JButton btndelete = new JButton("");
+		btndelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				cr.delete(Integer.parseInt(txtidtiposmedios.getText()));
@@ -108,8 +115,35 @@ public class JAtiposmedios extends JFrame {
 				
 			}
 		});
-		btnidtiposmedios.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btnidtiposmedios.setBounds(368, 149, 73, 50);
-		contentPane.add(btnidtiposmedios);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(368, 149, 73, 50);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		JButton btnRead = new JButton("");
+		btnRead.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cr.readOne(Integer.parseInt(txtidtiposmedios2.getText()), txtnombre, txtobservacion);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(285, 171, 43, 38);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
+		
+		JLabel lblNewLabel_3 = new JLabel("Consultar Registros ");
+		lblNewLabel_3.setBounds(52, 185, 97, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		txtidtiposmedios2 = new JTextField();
+		txtidtiposmedios2.setBounds(177, 182, 86, 20);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(txtidtiposmedios2);
+		txtidtiposmedios2.setColumns(10);
 	}
 }

@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 public class JAClientes extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txttipodocumento;
@@ -33,6 +33,7 @@ public class JAClientes extends JFrame {
 	private JTextField txtdirecion;
 	Clientes cl = new Clientes();
 	private JTextField txtidclientes;
+	private JTextField txtconsulta;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +56,7 @@ public class JAClientes extends JFrame {
 	public JAClientes() {
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 541, 437);
+		setBounds(100, 100, 541, 482);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -108,7 +109,7 @@ public class JAClientes extends JFrame {
 		
 		JLabel lblNewLabel_11 = new JLabel("Gestión de clientes");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_11.setBounds(145, 25, 139, 26);
+		lblNewLabel_11.setBounds(196, 11, 139, 26);
 		contentPane.add(lblNewLabel_11);
 		
 		txttipodocumento = new JTextField();
@@ -177,7 +178,7 @@ public class JAClientes extends JFrame {
 			
 			}
 		});
-		btnGuardar.setBounds(163, 364, 89, 23);
+		btnGuardar.setBounds(198, 400, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_12 = new JLabel("ID de clientes:");
@@ -200,6 +201,30 @@ public class JAClientes extends JFrame {
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
 		btndelete.setBounds(384, 118, 81, 58);
+		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
+		
+		JLabel lblNewLabel_13 = new JLabel("Consultar Registros");
+		lblNewLabel_13.setBounds(63, 356, 110, 14);
+		contentPane.add(lblNewLabel_13);
+		
+		txtconsulta = new JTextField();
+		txtconsulta.setBounds(215, 353, 86, 20);
+		contentPane.add(txtconsulta);
+		txtconsulta.setColumns(10);
+		
+		JButton btnConsultar = new JButton("");
+		btnConsultar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				cl.readOne(Integer.parseInt(txtconsulta.getText()), txttipodocumento, txtnumerodocumento, txtnombre, txtapellido, txteps, txtalergia, txtfechanacimiento, txtcorreoelectronico, txtestadocivil, txttelefono, txtalergia);
+				
+			}
+		});
+		btnConsultar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnConsultar.setBounds(346, 341, 46, 41);
+		btnConsultar.setContentAreaFilled(false);
+		contentPane.add(btnConsultar);
 	}
 }

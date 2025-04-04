@@ -25,8 +25,9 @@ public class JAtipostransportes extends JFrame {
 	private JTextField txtobservacion;
 	private JTextField txtidtipotransporte;
 	tipotransportes tit = new tipotransportes();
+	private JTextField txtconsultar;
 
-
+ 
 	/**
 	 * Launch the application.
 	 */
@@ -49,7 +50,7 @@ public class JAtipostransportes extends JFrame {
 	public JAtipostransportes() {
 		setTitle("Tipos de transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 517, 254);
+		setBounds(100, 100, 517, 289);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -90,7 +91,7 @@ public class JAtipostransportes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(158, 164, 89, 23);
+		btnGuardar.setBounds(154, 216, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_3 = new JLabel("ID tipos de transporte:");
@@ -102,8 +103,8 @@ public class JAtipostransportes extends JFrame {
 		contentPane.add(txtidtipotransporte);
 		txtidtipotransporte.setColumns(10);
 		
-		JButton btnidtipotransporte = new JButton("");
-		btnidtipotransporte.addMouseListener(new MouseAdapter() {
+		JButton btndelete = new JButton("");
+		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -111,9 +112,32 @@ public class JAtipostransportes extends JFrame {
 				
 			}
 		});
-		btnidtipotransporte.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btnidtipotransporte.setBounds(389, 133, 68, 54);
-		contentPane.add(btnidtipotransporte);
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
+		btndelete.setBounds(389, 133, 68, 54);
+		btndelete.setContentAreaFilled(false);
+		contentPane.add(btndelete);
+		
+		JLabel lblNewLabel_4 = new JLabel("Consultar Registros");
+		lblNewLabel_4.setBounds(52, 162, 121, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		txtconsultar = new JTextField();
+		txtconsultar.setBounds(195, 159, 86, 20);
+		contentPane.add(txtconsultar);
+		txtconsultar.setColumns(10);
+		
+		JButton btnRead = new JButton("");
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tit.readOne(Integer.parseInt(txtconsultar.getText()), txtnombre, txtobservacion);
+			}
+		});
+		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
+		btnRead.setBounds(302, 149, 46, 38);
+		btnRead.setContentAreaFilled(false);
+		contentPane.add(btnRead);
 	}
 
 }

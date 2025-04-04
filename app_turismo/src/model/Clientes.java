@@ -2,9 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import controller.Conexion;
 
@@ -192,6 +194,43 @@ Conexion conector = new Conexion();
 		
 	}
 	
-	
-	
+	//Consultar todos los registros de la tabla tipo medios
+	public void readOne( int idclientes, JTextField tipodocuemto, JTextField numerodocumento, JTextField nombres,JTextField apellidos, JTextField eps,  JTextField alergias ,  JTextField fechanacimiento ,  JTextField correoelectronico,  JTextField estadocivil,  JTextField telefono,  JTextField direccion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // preparar la trx (transacción)
+		
+		String script = "SELECT * FROM tblclientes WHERE idclientes = ?";
+		
+		try {
+			dbConnection = conector.conectarBD(); // Abrir la conexión 
+			pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+			
+			//Parametizar los campos 
+			pst.setInt(1, idclientes);
+			ResultSet rs = pst.executeQuery();//almacenamiento temporal
+			
+			
+			while (rs.next()) {
+				tipodocuemto.setText(rs.getString(2));
+				numerodocumento.setText(rs.getString(3));
+				nombres.setText(rs.getString(4));
+				apellidos.setText(rs.getString(5));
+				eps.setText(rs.getString(6));
+				alergias.setText(rs.getString(7));
+				fechanacimiento.setText(rs.getString(8));
+				correoelectronico.setText(rs.getString(9));
+				estadocivil.setText(rs.getString(10));
+				telefono.setText(rs.getString(11));
+				direccion.setText(rs.getString(12));
+				
+				
+			}
+			
+		
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	 
 }
