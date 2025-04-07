@@ -1,5 +1,6 @@
 package model;
 
+import java.security.Principal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controller.Conexion;
+import view.JAinterfaz;
+import view.JAprincipal;
 
 public class promotores {
 
@@ -21,6 +24,9 @@ public class promotores {
 	public String correocorporativo = "";
 	public String fechanacimiento = "";
 	public String telefono = "";
+	
+	
+	JAinterfaz principal = new JAinterfaz();
 	
 	public promotores(int idpromotores, int numerodocumento, String nombres, String apellidos, String direccion,
 			String correopersonal, String correocorporativo, String fechanacimiento, String telefono) {
@@ -256,6 +262,38 @@ Conexion conector = new Conexion();
 					JOptionPane.showConfirmDialog(null, "Resgistro No. " + idpromotores + "actualizado");	
 				}
 			
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
+		public void controlAcceso( int usuario, String contrasena) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "SELECT * FROM tblpromotores WHERE numerodocumento = ? and contrasena = ?";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setInt(1, usuario);
+				pst.setString(2, contrasena);
+				
+				ResultSet rs = pst.executeQuery();//Almacenamiento temporal
+				
+				if (rs.next()) {
+					principal.show();
+					JOptionPane.showConfirmDialog(null, "Acceso permitido");
+				
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Acceso denegado");
+				}
+				
+				
 				
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
