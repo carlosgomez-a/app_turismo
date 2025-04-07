@@ -34,9 +34,11 @@ public class JAAgencias extends JFrame {
 	private JTextField txtidcompania;
 	private JTextField txtidagencia;
 	Agencias rc = new Agencias();
-	private JTextField txtconsultar;
 	private JLabel lblNewLabel_10;
 	private JButton btnRead;
+	private JButton btnUpdate;
+	private JLabel lblNewLabel_11;
+	private JLabel lblNewLabel_12;
 
 	/**
 	 * Launch the application.
@@ -60,7 +62,7 @@ public class JAAgencias extends JFrame {
 	public JAAgencias() {
 		setTitle("Agencia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 426);
+		setBounds(100, 100, 384, 517);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -145,7 +147,7 @@ public class JAAgencias extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardar.setBounds(166, 343, 89, 23);
+		btnGuardar.setBounds(164, 418, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel_8 = new JLabel("Gestión de agencias ");
@@ -163,11 +165,11 @@ public class JAAgencias extends JFrame {
 		txtidcompania.setColumns(10);
 		
 		JLabel lblNewLabel_9 = new JLabel("ID de agencia:");
-		lblNewLabel_9.setBounds(347, 65, 76, 14);
+		lblNewLabel_9.setBounds(153, 281, 76, 14);
 		contentPane.add(lblNewLabel_9);
 		
 		txtidagencia = new JTextField();
-		txtidagencia.setBounds(337, 86, 86, 23);
+		txtidagencia.setBounds(148, 306, 86, 23);
 		contentPane.add(txtidagencia);
 		txtidagencia.setColumns(10);
 		
@@ -182,17 +184,12 @@ public class JAAgencias extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(333, 130, 89, 49);
+		btndelete.setBounds(136, 340, 89, 49);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(166, 291, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
-		
-		lblNewLabel_10 = new JLabel("Consultar Registros ");
-		lblNewLabel_10.setBounds(57, 294, 100, 14);
+		lblNewLabel_10 = new JLabel("Consultar ");
+		lblNewLabel_10.setBounds(48, 389, 76, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		btnRead = new JButton("");
@@ -200,11 +197,33 @@ public class JAAgencias extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				rc.readOne(Integer.parseInt(txtconsultar.getText()), txtNombre, txtDirrecion, txtcorreoelectronico, txttelefono, txtweb, txtobservacion);
+				rc.readOne(Integer.parseInt(txtidagencia.getText()), txtNombre, txtDirrecion, txtcorreoelectronico, txttelefono, txtfechacreacion, txtweb, txtobservacion, txtidcompania);
 			}
 		});
 		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnRead.setBounds(273, 284, 60, 38);
+		btnRead.setBounds(38, 340, 60, 49);
+		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		btnUpdate = new JButton("");
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rc.Update(Integer.parseInt(txtidagencia.getText()),txtNombre.getText(), txtDirrecion.getText(), txtcorreoelectronico.getText(), Integer.parseInt(txttelefono.getText()), txtfechacreacion.getText(),txtweb.getText(), txtobservacion.getText(), Integer.parseInt(txtidcompania.getText()));
+				
+			}
+		});
+		btnUpdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnUpdate.setBounds(274, 346, 50, 43);
+		contentPane.add(btnUpdate);
+		
+		lblNewLabel_11 = new JLabel("Actualizar ");
+		lblNewLabel_11.setBounds(272, 389, 67, 14);
+		contentPane.add(lblNewLabel_11);
+		btnRead.setContentAreaFilled(false);
+		
+		lblNewLabel_12 = new JLabel("Eliminar");
+		lblNewLabel_12.setBounds(164, 393, 71, 14);
+		contentPane.add(lblNewLabel_12);
 	}
 }

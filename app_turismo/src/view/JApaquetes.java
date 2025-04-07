@@ -47,7 +47,9 @@ public class JApaquetes extends JFrame {
 	private JTextField txtcodigo;
 	private JButton btndelete;
 	Paquete pa = new Paquete();
-	private JTextField txtconsultar;
+	private JButton btnupdate;
+	private JLabel lblNewLabel_16;
+	private JLabel lblNewLabel_17;
 
 
 	/**
@@ -72,7 +74,7 @@ public class JApaquetes extends JFrame {
 	public JApaquetes() {
 		setTitle("Paquetes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 523, 525);
+		setBounds(100, 100, 416, 621);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -164,12 +166,12 @@ public class JApaquetes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(190, 440, 89, 23);
+		btnGuardar.setBounds(163, 550, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de paquetes ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(190, 25, 139, 17);
+		lblNewLabel.setBounds(133, 22, 139, 17);
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_9 = new JLabel("ID de promotores:");
@@ -218,11 +220,11 @@ public class JApaquetes extends JFrame {
 		txtidtransporte.setColumns(10);
 		
 		lblNewLabel_14 = new JLabel("ID de paquetes:");
-		lblNewLabel_14.setBounds(377, 154, 95, 14);
+		lblNewLabel_14.setBounds(163, 405, 95, 14);
 		contentPane.add(lblNewLabel_14);
 		
 		txtcodigo = new JTextField();
-		txtcodigo.setBounds(377, 184, 86, 20);
+		txtcodigo.setBounds(163, 442, 86, 20);
 		contentPane.add(txtcodigo);
 		txtcodigo.setColumns(10);
 		
@@ -237,18 +239,13 @@ public class JApaquetes extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(382, 230, 81, 43);
+		btndelete.setBounds(163, 473, 81, 43);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		JLabel lblNewLabel_15 = new JLabel("Consultar Registros");
-		lblNewLabel_15.setBounds(57, 395, 108, 14);
+		JLabel lblNewLabel_15 = new JLabel("Consultar");
+		lblNewLabel_15.setBounds(73, 523, 51, 14);
 		contentPane.add(lblNewLabel_15);
-		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(209, 392, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
 		
 		JButton btnRead = new JButton("");
 		
@@ -257,11 +254,32 @@ public class JApaquetes extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				pa.readOne(Integer.parseInt(txtconsultar.getText()), txtiddestino, txtidorigen, txtprecio, txtfechaventa, txthoraventa, txtfechaejecucion, txthorasalida, txtobservaciones, txtidpromotores, txtidagencia, txtidmedios, txtidclientes, txtidtransporte);
+				pa.readOne(Integer.parseInt(txtcodigo.getText()), txtiddestino, txtidorigen, txtprecio, txtfechaventa, txthoraventa, txtfechaejecucion, txthorasalida, txtobservaciones, txtidpromotores, txtidagencia, txtidmedios, txtidclientes, txtidtransporte);
 			}
 		});
-		btnRead.setBounds(331, 381, 41, 43);
+		btnRead.setBounds(83, 473, 41, 43);
 		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		btnupdate = new JButton("");
+		btnupdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				pa.Update(Integer.parseInt(txtcodigo.getText()), Integer.parseInt(txtiddestino.getText()) , Integer.parseInt(txtidorigen.getText()), txtprecio.getText(), txtfechaventa.getText(), txthoraventa.getText(), txtfechaejecucion.getText(), txthorasalida.getText(), txtobservaciones.getText(),  Integer.parseInt(txtidpromotores.getText()),  Integer.parseInt(txtidagencia.getText()),  Integer.parseInt(txtidmedios.getText()),  Integer.parseInt(txtidclientes.getText()),  Integer.parseInt(txtidtransporte.getText()));
+			}
+		});
+		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnupdate.setBounds(270, 473, 62, 43);
+		contentPane.add(btnupdate);
+		
+		lblNewLabel_16 = new JLabel("Eliminar");
+		lblNewLabel_16.setBounds(183, 527, 46, 14);
+		contentPane.add(lblNewLabel_16);
+		
+		lblNewLabel_17 = new JLabel("Actualizar");
+		lblNewLabel_17.setBounds(280, 527, 62, 14);
+		btnupdate.setContentAreaFilled(false);
+		contentPane.add(lblNewLabel_17);
 	}
 }

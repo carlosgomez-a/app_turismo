@@ -33,7 +33,6 @@ public class JAClientes extends JFrame {
 	private JTextField txtdirecion;
 	Clientes cl = new Clientes();
 	private JTextField txtidclientes;
-	private JTextField txtconsulta;
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +55,7 @@ public class JAClientes extends JFrame {
 	public JAClientes() {
 		setTitle("Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 541, 482);
+		setBounds(100, 100, 423, 574);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -109,7 +108,7 @@ public class JAClientes extends JFrame {
 		
 		JLabel lblNewLabel_11 = new JLabel("Gestión de clientes");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_11.setBounds(196, 11, 139, 26);
+		lblNewLabel_11.setBounds(159, 11, 139, 26);
 		contentPane.add(lblNewLabel_11);
 		
 		txttipodocumento = new JTextField();
@@ -178,15 +177,15 @@ public class JAClientes extends JFrame {
 			
 			}
 		});
-		btnGuardar.setBounds(198, 400, 89, 23);
+		btnGuardar.setBounds(159, 501, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_12 = new JLabel("ID de clientes:");
-		lblNewLabel_12.setBounds(395, 62, 86, 14);
+		lblNewLabel_12.setBounds(177, 365, 86, 14);
 		contentPane.add(lblNewLabel_12);
 		
 		txtidclientes = new JTextField();
-		txtidclientes.setBounds(384, 87, 86, 20);
+		txtidclientes.setBounds(159, 390, 86, 20);
 		contentPane.add(txtidclientes);
 		txtidclientes.setColumns(10);
 		
@@ -200,31 +199,47 @@ public class JAClientes extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(384, 118, 81, 58);
+		btndelete.setBounds(159, 421, 81, 48);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		JLabel lblNewLabel_13 = new JLabel("Consultar Registros");
-		lblNewLabel_13.setBounds(63, 356, 110, 14);
+		JLabel lblNewLabel_13 = new JLabel("Consultar ");
+		lblNewLabel_13.setBounds(80, 473, 58, 14);
 		contentPane.add(lblNewLabel_13);
-		
-		txtconsulta = new JTextField();
-		txtconsulta.setBounds(215, 353, 86, 20);
-		contentPane.add(txtconsulta);
-		txtconsulta.setColumns(10);
 		
 		JButton btnConsultar = new JButton("");
 		btnConsultar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				cl.readOne(Integer.parseInt(txtconsulta.getText()), txttipodocumento, txtnumerodocumento, txtnombre, txtapellido, txteps, txtalergia, txtfechanacimiento, txtcorreoelectronico, txtestadocivil, txttelefono, txtalergia);
+				cl.readOne(Integer.parseInt(txtidclientes.getText()), txttipodocumento, txtnumerodocumento, txtnombre, txtapellido, txteps, txtalergia, txtfechanacimiento, txtcorreoelectronico, txtestadocivil, txttelefono, txtdirecion);
 				
 			}
 		});
 		btnConsultar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnConsultar.setBounds(346, 341, 46, 41);
+		btnConsultar.setBounds(80, 421, 58, 55);
 		btnConsultar.setContentAreaFilled(false);
 		contentPane.add(btnConsultar);
+		
+		JButton btnupdate = new JButton("");
+		btnupdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				cl.Update(Integer.parseInt(txtidclientes.getText()), txttipodocumento.getText(), Integer.parseInt(txtnumerodocumento.getText()), txtnombre.getText(), txtapellido.getText(), txteps.getText(), txtalergia.getText(), txtfechanacimiento.getText(), txtcorreoelectronico.getText(), txtestadocivil.getText(), txttelefono.getText(), txtdirecion.getText());
+			}
+		});
+		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnupdate.setBounds(259, 431, 58, 41);
+		contentPane.add(btnupdate);
+		
+		JLabel lblNewLabel_14 = new JLabel("Eliminar");
+		lblNewLabel_14.setBounds(181, 476, 46, 14);
+		contentPane.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel("Actualizar");
+		lblNewLabel_15.setBounds(269, 473, 66, 14);
+		btnupdate.setContentAreaFilled(false);
+		contentPane.add(lblNewLabel_15);
 	}
 }

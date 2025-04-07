@@ -29,7 +29,6 @@ public class JAtransporte extends JFrame {
 	private JTextField txtidtipotransporte;
 	private JTextField txtidtransporte;
 	transporte tra = new transporte();
-	private JTextField txtconsultar;
 
 	/**
 	 * Launch the application.
@@ -53,7 +52,7 @@ public class JAtransporte extends JFrame {
 	public JAtransporte() {
 		setTitle("Transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 376);
+		setBounds(100, 100, 402, 498);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -62,7 +61,7 @@ public class JAtransporte extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Gestión de transporte");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(148, 11, 197, 34);
+		lblNewLabel.setBounds(103, 11, 197, 34);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Matricula: ");
@@ -119,7 +118,7 @@ public class JAtransporte extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(138, 303, 89, 23);
+		btnGuardar.setBounds(150, 425, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_6 = new JLabel("Modelo: ");
@@ -141,11 +140,11 @@ public class JAtransporte extends JFrame {
 		txtidtipotransporte.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("ID tipo de transporte:");
-		lblNewLabel_8.setBounds(330, 97, 132, 14);
+		lblNewLabel_8.setBounds(139, 280, 132, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		txtidtransporte = new JTextField();
-		txtidtransporte.setBounds(342, 119, 86, 20);
+		txtidtransporte.setBounds(150, 305, 86, 20);
 		contentPane.add(txtidtransporte);
 		txtidtransporte.setColumns(10);
 		
@@ -161,30 +160,45 @@ public class JAtransporte extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(352, 150, 68, 43);
+		btndelete.setBounds(160, 345, 68, 43);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		JLabel lblNewLabel_9 = new JLabel("Consultar Registros");
-		lblNewLabel_9.setBounds(59, 273, 111, 14);
+		JLabel lblNewLabel_9 = new JLabel("Consultar ");
+		lblNewLabel_9.setBounds(56, 399, 61, 14);
 		contentPane.add(lblNewLabel_9);
-		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(202, 270, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
 		
 		JButton btnRead = new JButton("");
 		btnRead.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				tra.readOne(Integer.parseInt(txtconsultar.getText()), txtmatricula, txtmarca, txtpuestos, txtmodelo, txtcategoria, txtidtipotransporte, txtnumeromotor);
+				tra.readOne(Integer.parseInt(txtidtransporte.getText()), txtmatricula, txtmarca, txtpuestos, txtmodelo, txtcategoria, txtidtipotransporte, txtnumeromotor);
 			}
 		});
 		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnRead.setBounds(316, 257, 46, 43);
+		btnRead.setBounds(60, 345, 46, 43);
 		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		JLabel lblNewLabel_10 = new JLabel("Eliminar");
+		lblNewLabel_10.setBounds(183, 400, 56, 14);
+		contentPane.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("Actualizar");
+		lblNewLabel_11.setBounds(276, 399, 79, 14);
+		contentPane.add(lblNewLabel_11);
+		
+		JButton btnupdate = new JButton("");
+		btnupdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tra.Update(Integer.parseInt(txtidtransporte.getText()), txtmatricula.getText(), txtmarca.getText(), Integer.parseInt(txtpuestos.getText()), txtmodelo.getText(), txtcategoria.getText(), Integer.parseInt(txtidtipotransporte.getText()),Integer.parseInt(txtnumeromotor.getText()));
+			}
+		});
+		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnupdate.setBounds(263, 354, 61, 43);
+		contentPane.add(btnupdate);
 	}
 }

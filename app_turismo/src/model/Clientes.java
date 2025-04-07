@@ -232,5 +232,49 @@ Conexion conector = new Conexion();
 		}
 		
 	}
-	 
+	public void Update( int idclientes, String tipodocuemto, int numerodocumento, String nombres, String apellidos, 
+			String eps, String alergias, String fechanacimiento, String correoelectronico , String estadocivil , String telefono, String direccion ) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // preparar la trx (transacción)
+		
+		String script = "UPDATE tblclientes SET tipodocuemto = ?, numerodocumento = ?, nombres = ?, apellidos = ?, eps = ?, alergias = ?, fechanacimiento = ?, correoelectronico = ?, estadocivil = ?, telefono = ?, direccion = ?  WHERE idclientes = ? ";
+		
+		try {
+			dbConnection = conector.conectarBD(); // Abrir la conexión 
+			pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+			
+			//Parametizar los campos 
+			pst.setString(1, tipodocuemto);
+			pst.setInt(2, numerodocumento);
+			pst.setString(3, nombres);
+			pst.setString(4, apellidos);
+			pst.setString(5, eps);
+			pst.setString(6, alergias);
+			pst.setString(7, fechanacimiento);
+			pst.setString(8, correoelectronico);
+			pst.setString(9, estadocivil);
+			pst.setString(10, telefono);
+			pst.setString(11, direccion);
+			pst.setInt(12, idclientes);
+			
+			
+			
+			
+			//Confirmar la operacion
+			int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idclientes + "?");
+			
+			if (respuesta == JOptionPane.YES_OPTION) {
+				
+				//Ejecutar la trx
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Resgistro No. " + idclientes + "actualizado");	
+			}
+		
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
 }

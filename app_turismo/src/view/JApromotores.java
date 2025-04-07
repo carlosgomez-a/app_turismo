@@ -38,8 +38,10 @@ public class JApromotores extends JFrame {
 	private JButton btndelete;
 	promotores op = new promotores();
 	private JLabel lblNewLabel_11;
-	private JTextField txtconsultar;
 	private JButton btnRead;
+	private JLabel lblNewLabel_12;
+	private JButton btnupdate;
+	private JLabel lblNewLabel_13;
 
 
 	/**
@@ -64,7 +66,7 @@ public class JApromotores extends JFrame {
 	public JApromotores() {
 		setTitle("Promotores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 482, 420);
+		setBounds(100, 100, 433, 516);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -165,7 +167,7 @@ public class JApromotores extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(153, 347, 89, 23);
+		btnGuardar.setBounds(175, 443, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de promotores");
@@ -174,15 +176,19 @@ public class JApromotores extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_10 = new JLabel("ID de promotores: ");
-		lblNewLabel_10.setBounds(353, 82, 103, 14);
+		lblNewLabel_10.setBounds(165, 307, 103, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		txtidpromotores = new JTextField();
-		txtidpromotores.setBounds(353, 117, 86, 20);
+		txtidpromotores.setBounds(165, 332, 86, 20);
 		contentPane.add(txtidpromotores);
 		txtidpromotores.setColumns(10);
 		
 		btndelete = new JButton("");
+		btndelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -193,31 +199,49 @@ public class JApromotores extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(360, 160, 67, 39);
+		btndelete.setBounds(175, 371, 67, 39);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		lblNewLabel_11 = new JLabel("Consultar Registros");
-		lblNewLabel_11.setBounds(66, 291, 94, 14);
+		lblNewLabel_11 = new JLabel("Consultar ");
+		lblNewLabel_11.setBounds(62, 421, 49, 14);
 		contentPane.add(lblNewLabel_11);
-		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(206, 288, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
 		
 		btnRead = new JButton("");
 		btnRead.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				op.readOne(Integer.parseInt(txtconsultar.getText()), txttipodocumento, txtnumerodocumento, txtnombres, txtapellidos, txtdireccion, txtcorreopersonal, txtcorreocorporativo, txtfechanacimiento, txttelefono);
+				op.readOne(Integer.parseInt(txtidpromotores.getText()), txttipodocumento, txtnumerodocumento, txtnombres, txtapellidos, txtdireccion, txtcorreopersonal, txtcorreocorporativo, txtfechanacimiento, txttelefono);
 			}
 		});
 		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnRead.setBounds(327, 281, 57, 39);
+		btnRead.setBounds(55, 364, 67, 46);
 		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		lblNewLabel_12 = new JLabel("Eliminar");
+		lblNewLabel_12.setBounds(190, 418, 46, 14);
+		contentPane.add(lblNewLabel_12);
+		
+		btnupdate = new JButton("");
+		btnupdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				op.Update(Integer.parseInt(txtidpromotores.getText()),txttipodocumento.getText(), txtnumerodocumento.getText(), txtnombres.getText(), txtapellidos.getText(), txtdireccion.getText(), txtcorreopersonal.getText(), txtcorreocorporativo.getText(), txtfechanacimiento.getText(), txttelefono.getText());
+				
+				
+			}
+		});
+		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnupdate.setBounds(288, 364, 67, 46);
+		contentPane.add(btnupdate);
+		
+		lblNewLabel_13 = new JLabel("Actualizar");
+		lblNewLabel_13.setBounds(298, 421, 68, 14);
+		btnupdate.setContentAreaFilled(false);
+		contentPane.add(lblNewLabel_13);
 	}
 
 }

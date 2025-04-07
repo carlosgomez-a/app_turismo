@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JAtipostransportes extends JFrame {
 
@@ -25,7 +27,6 @@ public class JAtipostransportes extends JFrame {
 	private JTextField txtobservacion;
 	private JTextField txtidtipotransporte;
 	tipotransportes tit = new tipotransportes();
-	private JTextField txtconsultar;
 
  
 	/**
@@ -50,7 +51,7 @@ public class JAtipostransportes extends JFrame {
 	public JAtipostransportes() {
 		setTitle("Tipos de transporte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 517, 289);
+		setBounds(100, 100, 394, 390);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -91,19 +92,23 @@ public class JAtipostransportes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(154, 216, 89, 23);
+		btnGuardar.setBounds(137, 317, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_3 = new JLabel("ID tipos de transporte:");
-		lblNewLabel_3.setBounds(361, 77, 130, 14);
+		lblNewLabel_3.setBounds(137, 161, 130, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		txtidtipotransporte = new JTextField();
-		txtidtipotransporte.setBounds(379, 102, 86, 20);
+		txtidtipotransporte.setBounds(137, 186, 86, 20);
 		contentPane.add(txtidtipotransporte);
 		txtidtipotransporte.setColumns(10);
 		
 		JButton btndelete = new JButton("");
+		btndelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -113,31 +118,49 @@ public class JAtipostransportes extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(389, 133, 68, 54);
+		btndelete.setBounds(147, 217, 68, 54);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		JLabel lblNewLabel_4 = new JLabel("Consultar Registros");
-		lblNewLabel_4.setBounds(52, 162, 121, 14);
+		JLabel lblNewLabel_4 = new JLabel("Consultar ");
+		lblNewLabel_4.setBounds(52, 282, 55, 14);
 		contentPane.add(lblNewLabel_4);
-		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(195, 159, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
 		
 		JButton btnRead = new JButton("");
 		btnRead.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				tit.readOne(Integer.parseInt(txtconsultar.getText()), txtnombre, txtobservacion);
+				tit.readOne(Integer.parseInt(txtidtipotransporte.getText()), txtnombre, txtobservacion);
 			}
 		});
 		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnRead.setBounds(302, 149, 46, 38);
+		btnRead.setBounds(61, 225, 46, 46);
 		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		JLabel lblNewLabel_5 = new JLabel("Eliminar");
+		lblNewLabel_5.setBounds(165, 282, 46, 14);
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Actualizar");
+		lblNewLabel_6.setBounds(271, 282, 73, 14);
+		contentPane.add(lblNewLabel_6);
+		
+		JButton btnupdate = new JButton("");
+		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnupdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				tit.Update(Integer.parseInt(txtidtipotransporte.getText()), txtnombre.getText(), txtobservacion.getText());
+				
+				
+			}
+		});
+		btnupdate.setBounds(262, 225, 55, 46);
+		btnupdate.setContentAreaFilled(false);
+		contentPane.add(btnupdate);
 	}
 
 }

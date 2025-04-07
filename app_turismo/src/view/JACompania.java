@@ -34,8 +34,10 @@ public class JACompania extends JFrame {
 	private JTextField txtidcompania;
 	Compania cc = new Compania();
 	private JLabel lblNewLabel_9;
-	private JTextField txtconsultar;
 	private JButton btnRead;
+	private JButton btnNewButton;
+	private JLabel lblNewLabel_10;
+	private JLabel lblNewLabel_11;
 
 	/**
 	 * Launch the application.
@@ -59,7 +61,7 @@ public class JACompania extends JFrame {
 	public JACompania() {
 		setTitle("Compañia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 498, 405);
+		setBounds(100, 100, 391, 513);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -143,20 +145,20 @@ public class JACompania extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(137, 332, 89, 23);
+		btnGuardar.setBounds(129, 440, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de compañia");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(185, 23, 136, 28);
+		lblNewLabel.setBounds(129, 22, 136, 28);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_8 = new JLabel("ID de la compañia:");
-		lblNewLabel_8.setBounds(355, 82, 91, 14);
+		lblNewLabel_8.setBounds(151, 286, 91, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		txtidcompania = new JTextField();
-		txtidcompania.setBounds(355, 107, 86, 20);
+		txtidcompania.setBounds(151, 311, 86, 20);
 		contentPane.add(txtidcompania);
 		txtidcompania.setColumns(10);
 		
@@ -172,28 +174,43 @@ public class JACompania extends JFrame {
 			}
 		});
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\616650_bin_delete_garbage_trash_icon.png"));
-		btndelete.setBounds(365, 135, 61, 57);
+		btndelete.setBounds(161, 342, 55, 57);
 		btndelete.setContentAreaFilled(false);
 		contentPane.add(btndelete);
 		
-		lblNewLabel_9 = new JLabel("Consultar Registros");
-		lblNewLabel_9.setBounds(60, 282, 104, 14);
+		lblNewLabel_9 = new JLabel("Consultar");
+		lblNewLabel_9.setBounds(74, 410, 49, 14);
 		contentPane.add(lblNewLabel_9);
-		
-		txtconsultar = new JTextField();
-		txtconsultar.setBounds(185, 279, 86, 20);
-		contentPane.add(txtconsultar);
-		txtconsultar.setColumns(10);
 		
 		btnRead = new JButton("");
 		btnRead.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cc.readOne(Integer.parseInt(txtconsultar.getText()), txtrazonsocial, txtdirrecion, txtcorreoelectronico, txtelefono, txtfechacreacion, txtweb, txtobservacion);
+				cc.readOne(Integer.parseInt(txtidcompania.getText()), txtrazonsocial, txtdirrecion, txtcorreoelectronico, txtelefono, txtfechacreacion, txtweb, txtobservacion);
 			}
 		});
 		btnRead.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\613531_find_glass_magnifying_search_zoom_icon.png"));
-		btnRead.setBounds(309, 272, 49, 38);
+		btnRead.setBounds(60, 353, 63, 46);
 		btnRead.setContentAreaFilled(false);
 		contentPane.add(btnRead);
+		
+		btnNewButton = new JButton("");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				cc.Update(Integer.parseInt(txtidcompania.getText()), txtrazonsocial.getText(), txtdirrecion.getText(), txtcorreoelectronico.getText(), Integer.parseInt(txtelefono.getText()) , txtfechacreacion.getText(), txtweb.getText(), txtobservacion.getText());
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
+		btnNewButton.setBounds(244, 353, 57, 46);
+		contentPane.add(btnNewButton);
+		
+		lblNewLabel_10 = new JLabel("Eliminar");
+		lblNewLabel_10.setBounds(171, 410, 46, 14);
+		contentPane.add(lblNewLabel_10);
+		
+		lblNewLabel_11 = new JLabel("Actualizar");
+		lblNewLabel_11.setBounds(254, 410, 71, 14);
+		contentPane.add(lblNewLabel_11);
 	}
 }

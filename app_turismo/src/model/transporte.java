@@ -205,6 +205,48 @@ Conexion conector = new Conexion();
 			
 		}
 
-
+		public void Update( int idtransporte, String matricula, String marca, int puestos, 
+				String modelo, String categoria, int idtipotransporte, int numero_motor) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "UPDATE tbltransporte SET matricula = ?, marca = ?, puestos = ?, modelo = ?, categoria = ?, idtipotransporte = ?, numero_motor = ?  WHERE idtransporte = ? ";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setString(1, matricula);
+				pst.setString(2, marca);
+				pst.setInt(3, puestos);
+				pst.setString(4, modelo);
+				pst.setString(5, categoria);
+				pst.setInt(6, idtipotransporte);
+				pst.setInt(7, numero_motor);
+				pst.setInt(8, idtransporte);
+				
+				
+				
+				
+				
+				//Confirmar la operacion
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idtransporte + "?");
+				
+				if (respuesta == JOptionPane.YES_OPTION) {
+					
+					//Ejecutar la trx
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null, "Resgistro No. " + idtransporte + "actualizado");	
+				}
+			
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
+	
+	 
 	
 }

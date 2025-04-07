@@ -182,7 +182,7 @@ Conexion conector = new Conexion();
 		
 	}
 	//Consultar todos los registros de la tabla tipo medios
-			public void readOne( int idagencia, JTextField nombre, JTextField direccion, JTextField correoElectronico,JTextField telefono, JTextField web,  JTextField observacion) {
+			public void readOne( int idagencia, JTextField nombre, JTextField direccion, JTextField correoElectronico,JTextField telefono, JTextField web, JTextField fechacreacion, JTextField observacion, JTextField idcompania) {
 				Connection dbConnection = null;
 				PreparedStatement pst = null; // preparar la trx (transacción)
 				
@@ -202,13 +202,56 @@ Conexion conector = new Conexion();
 						direccion.setText(rs.getString(3));
 						correoElectronico.setText(rs.getString(4));
 						telefono.setText(rs.getString(5));
+						fechacreacion.setText(rs.getString(7));
 						web.setText(rs.getString(6));
-						observacion.setText(rs.getString(7));
+						observacion.setText(rs.getString(8));
+						idcompania.setText(rs.getString(9));
+					
 						
 						
 					}
 					
 				
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				
+			}
+			
+			public void Update( int idagencia, String nombre, String direccion, String correoElectronico, int telefono, 
+					String fechacreacion, String web, String observacion, int idcompania) {
+				Connection dbConnection = null;
+				PreparedStatement pst = null; // preparar la trx (transacción)
+				
+				String script = "UPDATE tblagencias SET nombre = ?, direccion = ?, correoElectronico = ?, telefono = ?, fechacreacion = ?, web = ?, observacion = ?, idcompania = ?  WHERE idagencia = ? ";
+				
+				try {
+					dbConnection = conector.conectarBD(); // Abrir la conexión 
+					pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+					
+					//Parametizar los campos 
+					pst.setString(1, nombre);
+					pst.setString(2, direccion);
+					pst.setString(3, correoElectronico);
+					pst.setInt(4, telefono);
+					pst.setString(5, fechacreacion);
+					pst.setString(6, web);
+					pst.setString(7, observacion);
+					pst.setInt(8, idcompania);
+					pst.setInt(9, idagencia);
+					
+					
+					//Confirmar la operacion
+					int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idagencia + "?");
+					
+					if (respuesta == JOptionPane.YES_OPTION) {
+						
+						//Ejecutar la trx
+						pst.executeUpdate();
+						JOptionPane.showConfirmDialog(null, "Resgistro No. " + idagencia + "actualizado");	
+					}
+				
+					
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}

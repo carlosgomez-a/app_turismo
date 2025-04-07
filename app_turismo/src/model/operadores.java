@@ -199,4 +199,46 @@ Conexion conector = new Conexion();
 			}
 			
 		}
+		
+		public void Update( int idoperadores, String tipodocuento, String numerodocumento, String nombres, 
+				String apellidos, String direccion, String correoelectronico, String telefono, int idtransporte  ) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // preparar la trx (transacción)
+			
+			String script = "UPDATE tbloperadores SET tipodocuento = ?, numerodocumento = ?, nombres = ?, apellidos = ?, direccion = ?, correoelectronico = ?, telefono = ?, idtransporte = ?   WHERE idoperadores = ? ";
+			
+			try {
+				dbConnection = conector.conectarBD(); // Abrir la conexión 
+				pst = dbConnection.prepareStatement(script); //Abrir el Buffer
+				
+				//Parametizar los campos 
+				pst.setString(1, tipodocuento);
+				pst.setString(2, numerodocumento);
+				pst.setString(3, nombres);
+				pst.setString(4, apellidos);
+				pst.setString(5, direccion);
+				pst.setString(6, correoelectronico);
+				pst.setString(7, telefono);
+				pst.setInt(8, idtransporte);
+				pst.setInt(9, idoperadores);
+				
+				
+				
+				
+				//Confirmar la operacion
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idoperadores + "?");
+				
+				if (respuesta == JOptionPane.YES_OPTION) {
+					
+					//Ejecutar la trx
+					pst.executeUpdate();
+					JOptionPane.showConfirmDialog(null, "Resgistro No. " + idoperadores + "actualizado");	
+				}
+			
+				
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		}
 }
