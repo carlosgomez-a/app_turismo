@@ -10,6 +10,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class JAinterfaz extends JFrame {
 
@@ -37,8 +41,9 @@ public class JAinterfaz extends JFrame {
 	 */
 	public JAinterfaz() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 646, 506);
+		setBounds(100, 100, 304, 506);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(170, 213, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -161,6 +166,15 @@ public class JAinterfaz extends JFrame {
 		});
 		btnTiposmedios.setBounds(78, 401, 142, 23);
 		contentPane.add(btnTiposmedios);
+		
+		JLabel lblNewLabel = new JLabel("Menu");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setBounds(78, 29, 60, 48);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnMenu = new JButton("");
+		btnMenu.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4635984_home_house_start_ui_ux_icon.png"));
+		btnMenu.setBounds(160, 29, 60, 48);
+		contentPane.add(btnMenu);
 	}
-
 }
