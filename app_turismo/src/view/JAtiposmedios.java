@@ -82,7 +82,7 @@ public class JAtiposmedios extends JFrame {
 				cr.Create(txtnombre.getText(),txtobservacion.getText());
 			}
 		});
-		btnGuardar.setBounds(141, 326, 89, 23);
+		btnGuardar.setBounds(204, 327, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Gestión de tipos de medios");
@@ -160,5 +160,17 @@ public class JAtiposmedios extends JFrame {
 		lblNewLabel_5.setBounds(269, 283, 67, 14);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(lblNewLabel_5);
+		
+		JButton btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(80, 327, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

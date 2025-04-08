@@ -39,6 +39,7 @@ public class JAAgencias extends JFrame {
 	private JButton btnUpdate;
 	private JLabel lblNewLabel_11;
 	private JLabel lblNewLabel_12;
+	private JButton btnAtras;
 
 	/**
 	 * Launch the application.
@@ -147,7 +148,7 @@ public class JAAgencias extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardar.setBounds(164, 418, 89, 23);
+		btnGuardar.setBounds(215, 428, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel_8 = new JLabel("Gestión de agencias ");
@@ -225,5 +226,18 @@ public class JAAgencias extends JFrame {
 		lblNewLabel_12 = new JLabel("Eliminar");
 		lblNewLabel_12.setBounds(164, 393, 71, 14);
 		contentPane.add(lblNewLabel_12);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(68, 428, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

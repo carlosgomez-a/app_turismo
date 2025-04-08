@@ -37,6 +37,7 @@ public class JAmedios extends JFrame {
 	private JButton btnupdate;
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
+	private JButton btnAtras;
 
 	/**
 	 * Launch the application.
@@ -93,7 +94,7 @@ public class JAmedios extends JFrame {
 				me.Create(txtnombre.getText(), txtobservacion.getText(), Integer.parseInt(txtidtiposmedios.getText()));
 			}
 		});
-		btnGuardar.setBounds(146, 344, 89, 23);
+		btnGuardar.setBounds(189, 344, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de medios");
@@ -174,5 +175,17 @@ public class JAmedios extends JFrame {
 		lblNewLabel_7.setBounds(251, 315, 75, 14);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(lblNewLabel_7);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(80, 344, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

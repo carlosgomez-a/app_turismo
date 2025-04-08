@@ -41,6 +41,7 @@ public class JAoperadores extends JFrame {
 	private JLabel lblNewLabel_11;
 	private JLabel lblNewLabel_12;
 	private JButton btnupdate;
+	private JButton btnAtras;
 
 	/**
 	 * Launch the application.
@@ -148,7 +149,7 @@ public class JAoperadores extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardar.setBounds(160, 422, 89, 23);
+		btnGuardar.setBounds(208, 422, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de operadores");
@@ -226,6 +227,18 @@ public class JAoperadores extends JFrame {
 		btnupdate.setBounds(269, 352, 58, 43);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(btnupdate);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(88, 422, 89, 23);
+		contentPane.add(btnAtras);
 	}
 
 }

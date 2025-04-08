@@ -92,7 +92,7 @@ public class JAtipostransportes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(137, 317, 89, 23);
+		btnGuardar.setBounds(198, 317, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_3 = new JLabel("ID tipos de transporte:");
@@ -161,6 +161,18 @@ public class JAtipostransportes extends JFrame {
 		btnupdate.setBounds(262, 225, 55, 46);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(btnupdate);
+		
+		JButton btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(74, 317, 89, 23);
+		contentPane.add(btnAtras);
 	}
 
 }

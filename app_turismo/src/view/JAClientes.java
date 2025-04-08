@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JAClientes extends JFrame {
  
@@ -167,6 +169,10 @@ public class JAClientes extends JFrame {
 		txtdirecion.setColumns(10);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -177,7 +183,7 @@ public class JAClientes extends JFrame {
 			
 			}
 		});
-		btnGuardar.setBounds(159, 501, 89, 23);
+		btnGuardar.setBounds(209, 501, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_12 = new JLabel("ID de clientes:");
@@ -241,5 +247,17 @@ public class JAClientes extends JFrame {
 		lblNewLabel_15.setBounds(269, 473, 66, 14);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(lblNewLabel_15);
+		
+		JButton btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(90, 501, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

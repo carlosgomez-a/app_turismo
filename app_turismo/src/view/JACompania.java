@@ -38,6 +38,7 @@ public class JACompania extends JFrame {
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_10;
 	private JLabel lblNewLabel_11;
+	private JButton btnAtras;
 
 	/**
 	 * Launch the application.
@@ -145,7 +146,7 @@ public class JACompania extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(129, 440, 89, 23);
+		btnGuardar.setBounds(200, 440, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de compañia");
@@ -212,5 +213,17 @@ public class JACompania extends JFrame {
 		lblNewLabel_11 = new JLabel("Actualizar");
 		lblNewLabel_11.setBounds(254, 410, 71, 14);
 		contentPane.add(lblNewLabel_11);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(84, 440, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

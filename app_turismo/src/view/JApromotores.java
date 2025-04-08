@@ -42,6 +42,7 @@ public class JApromotores extends JFrame {
 	private JLabel lblNewLabel_12;
 	private JButton btnupdate;
 	private JLabel lblNewLabel_13;
+	private JButton btnAtras;
 
 
 	/**
@@ -167,7 +168,7 @@ public class JApromotores extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(175, 443, 89, 23);
+		btnGuardar.setBounds(218, 443, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de promotores");
@@ -242,6 +243,18 @@ public class JApromotores extends JFrame {
 		lblNewLabel_13.setBounds(298, 421, 68, 14);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(lblNewLabel_13);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(106, 443, 89, 23);
+		contentPane.add(btnAtras);
 	}
 
 }

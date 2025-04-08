@@ -50,6 +50,7 @@ public class JApaquetes extends JFrame {
 	private JButton btnupdate;
 	private JLabel lblNewLabel_16;
 	private JLabel lblNewLabel_17;
+	private JButton btnAtras;
 
 
 	/**
@@ -166,7 +167,7 @@ public class JApaquetes extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(163, 550, 89, 23);
+		btnGuardar.setBounds(212, 552, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		lblNewLabel = new JLabel("Gestión de paquetes ");
@@ -281,5 +282,17 @@ public class JApaquetes extends JFrame {
 		lblNewLabel_17.setBounds(280, 527, 62, 14);
 		btnupdate.setContentAreaFilled(false);
 		contentPane.add(lblNewLabel_17);
+		
+		btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(83, 552, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

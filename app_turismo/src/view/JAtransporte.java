@@ -118,7 +118,7 @@ public class JAtransporte extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(150, 425, 89, 23);
+		btnGuardar.setBounds(211, 425, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_6 = new JLabel("Modelo: ");
@@ -200,5 +200,17 @@ public class JAtransporte extends JFrame {
 		btnupdate.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9554514_sync_reload_refresh_update_repeat_icon.png"));
 		btnupdate.setBounds(263, 354, 61, 43);
 		contentPane.add(btnupdate);
+		
+		JButton btnAtras = new JButton("Atrás");
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JAinterfaz atras = new JAinterfaz();
+				
+				atras.setVisible(true);
+			}
+		});
+		btnAtras.setBounds(77, 425, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }
