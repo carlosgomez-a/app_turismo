@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JAprincipal extends JFrame {
 
@@ -82,6 +84,14 @@ public class JAprincipal extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btningresar = new JButton("INGRESAR");
+		btningresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JAinterfaz interfaz = new JAinterfaz();
+				
+				interfaz.setVisible(true);
+			}
+		});
 		btningresar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
