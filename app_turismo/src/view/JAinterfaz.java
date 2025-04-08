@@ -56,7 +56,7 @@ public class JAinterfaz extends JFrame {
 				
 				JAAgencias ag = new JAAgencias();
 				
-				ag.show();
+				ag.setVisible(true);
 			}
 		});
 		btnAgencias.setBounds(78, 130, 142, 23);
@@ -68,7 +68,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				JApaquetes pa = new JApaquetes();
 				
-				pa.show();
+				pa.setVisible(true);
 			}
 		});
 		btnPaquetes.setBounds(78, 164, 142, 23);
@@ -79,7 +79,7 @@ public class JAinterfaz extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JAClientes cli = new JAClientes();
-				cli.show();
+				cli.setVisible(true);
 			}
 		});
 		btnclientes.setBounds(78, 334, 142, 23);
@@ -91,7 +91,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				JAmedios me = new JAmedios();
-				me.show();
+				me.setVisible(true);
 			}
 		});
 		btnmedios.setBounds(78, 367, 142, 23);
@@ -103,7 +103,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				JApromotores pro = new JApromotores();
 				
-				pro.show();
+				pro.setVisible(true);
 			}
 		});
 		btnpromotores.setBounds(78, 198, 142, 23);
@@ -115,7 +115,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				JAtransporte tra = new JAtransporte();
-				tra.show();
+				tra.setVisible(true);
 			}
 		});
 		btnTransporte.setBounds(78, 300, 142, 23);
@@ -125,7 +125,7 @@ public class JAinterfaz extends JFrame {
 		btnOperadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JAoperadores ope = new JAoperadores();
-				ope.show();
+				ope.setVisible(true);
 			}
 		});
 		btnOperadores.setBounds(78, 232, 142, 23);
@@ -137,7 +137,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				JACompania co = new JACompania();
-				co.show();
+				co.setVisible(true);
 			}
 		});
 		btnCompañia.setBounds(78, 96, 142, 23);
@@ -149,7 +149,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				JAtipostransportes tit = new JAtipostransportes();
 				
-				tit.show();
+				tit.setVisible(true);
 			}
 		});
 		btnTipostransporte.setBounds(78, 266, 142, 23);
@@ -161,7 +161,7 @@ public class JAinterfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				JAtiposmedios tme = new JAtiposmedios();
-				tme.show();
+				tme.setVisible(true);
 			}
 		});
 		btnTiposmedios.setBounds(78, 401, 142, 23);
