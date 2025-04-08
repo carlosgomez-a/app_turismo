@@ -177,4 +177,5 @@ public class JAinterfaz extends JFrame {
 		btnMenu.setBounds(160, 29, 60, 48);
 		contentPane.add(btnMenu);
 	}
+
 }
